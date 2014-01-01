@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cronentries>
+  
+  <cron>
+    <url>/weeklyreport</url>
+    <description>Mail out a weekly report</description>
+    <schedule>every 12 hours</schedule>
+    <timezone>Asia/Kolkata</timezone>
+  </cron>
+  
+</cronentries>
