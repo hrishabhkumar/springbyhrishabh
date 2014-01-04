@@ -12,19 +12,21 @@
 		    <a href="/" class="navbar-brand">Spring By Hrishabh</a>
 		    
 		    <div class="collapse navbar-collapse navHeaderCollapse">
-			    <ul class="nav navbar-nav navbar-right">
+			    <ul class="nav navbar-nav navbar-right" id="links">
 			    	<li><a href="#">Welcome
 		    <%if(session.getAttribute("user")==null){ %>
 		    	Guest
 		    <%}else{ %>
 		    	${user}
 		    <%} %></a></li>
-			    	<li class="active"><a href="/">Home</a></li>
-			    	<%if(session.getAttribute("user")==null){ %><li ><a href="#signIn" data-toggle="modal">SignIn</a></li><%} %>
+			    	<li id="home"><a href="/">Home</a></li>
+			    	<%if(session.getAttribute("user")==null){ %><li id="signin"><a href="#signIn" data-toggle="modal">SignIn</a></li><%} %>
 			    	<%if(session.getAttribute("user")==null){ %><li ><a href="#register" data-toggle="modal">Register</a></li><%} %>
-				    <%if(session.getAttribute("user")!=null){ %><li><a href="/detail">Profile</a></li><%} %>
-				   <%if(session.getAttribute("user")!=null){ %> <li><a href="/friend">Search</a></li><%} %>
-				   <%if(session.getAttribute("user")!=null){ %> <li><a href="/logout">Logout</a></li><%} %>
+				    <%if(session.getAttribute("user")!=null){ %><li id="profile"><a href="/detail" id="profile">Profile</a></li><%} %>
+				   <%if(session.getAttribute("user")!=null){ %> <li id=friend><a href="/friend">Search</a></li><%} %>
+				    <%if(session.getAttribute("user")!=null){ %> <li id=image><a href="/image">Images</a></li><%} %>
+				    <%if(session.getAttribute("user")!=null){ %> <li id=video><a href="/video">Video</a></li><%} %>
+				   <%if(session.getAttribute("user")!=null){ %> <li id=logout><a href="/logout">Logout</a></li><%} %>
 			    </ul>
 	    
 	    	</div>

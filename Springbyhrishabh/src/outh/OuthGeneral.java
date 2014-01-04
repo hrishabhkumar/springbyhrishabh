@@ -31,7 +31,6 @@ public class OuthGeneral {
 			connection.setDoOutput(true);
 			connection.setRequestMethod(method);
 			connection.setRequestProperty("Content-Type","application/x-www-form-urlencoded");
-			
 			//Data 
 			if(data!=null){
 			OutputStream o = connection.getOutputStream();

@@ -1,4 +1,9 @@
 $(document).ready(function(){
+
+			if (!$('#friend').hasClass('active')) {
+				$('#friend').addClass('active');
+			}
+	
 	$('form').submit(function(){
 		event.preventDefault();
 		var value1=$('#search').val();
@@ -13,7 +18,7 @@ $(document).ready(function(){
 			dataType: "json",
 			data: dataString,
 			success : function(data){		    	  
-				mydata=data.result;
+				mydata=JSON.parse(data.result);
 				if(mydata.length!=0){
 				var output="<ul>";
 				for (var i in mydata) {

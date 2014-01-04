@@ -31,7 +31,7 @@ public class OuthGoogle {
 	Map<String, String> json = parser.jsonParser(line);
 	
 	data="?access_token="+json.get("access_token");
-	
+	System.out.println(json.get("access_token"));
 	line=og.outh(gc.getUSER_INFO_URL()+data, "GET", null, req, resp);
 	
 	json=parser.jsonParser(line);

@@ -14,11 +14,7 @@ import javax.mail.internet.MimeMessage;
 
 public class SendEmail {
 	
-	
 	Properties props=new Properties();
-	  
-	   
-	
 	Session session = Session.getInstance(props, null);
 	public void sendMail(String email, String name) throws MessagingException, IOException{
 			

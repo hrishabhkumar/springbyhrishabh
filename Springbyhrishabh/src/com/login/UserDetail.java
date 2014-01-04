@@ -30,6 +30,7 @@ public class UserDetail {
 	@Persistent
 	private String pic="AMIfv949WFw9tcdgK1za_PyOe7y_UoSWfWiOiLGk9_v-thF6TqVDWX-Yp8NQG5xdJ5PFu8n6fL8APYBBY4Vc6mBsssIU6W1TCTsw74jCuqSSWdettznlTQn3nn_iGb9lQS5gzz0mESCbeNspaCaUByIKODpnGFbZtDXdaBPMstY6gW-ofPYY8q8";
 	
+	
 	@Persistent
 	private long loginCount=1;
 	
@@ -91,9 +92,6 @@ public class UserDetail {
 	 * @param pic the pic to set
 	 */
 	public void setPic(String pic) {
-		this.pic = pic;
+		this.pic=pic;	
 	}
-
-	
-
 }

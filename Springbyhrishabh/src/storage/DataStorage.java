@@ -111,15 +111,12 @@ public class DataStorage {
 		catch(Exception e){
 			return "notfound";
 		}
-		
-		
 	}
 	public void setImage(HttpServletRequest req,  String pic){
 		session=req.getSession();
 		ud= pm.getObjectById(UserDetail.class, session.getAttribute("email"));
 		ud.setPic(pic);
-		
-		
+		ud.setPic(pic);
 		session.setAttribute("prof_pic", "http://springbyhrishabh.appspot.com/serve?blobkey="+ud.getPic());
 	}
 	 

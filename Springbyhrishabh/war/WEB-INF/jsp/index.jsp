@@ -20,9 +20,14 @@
      <link rel="stylesheet" type="text/css" href="jsfile/datepick/jquery.datepick.css"> 
 	<script type="text/javascript" src="jsfile/datepick/jquery.datepick.js"></script>
 	<script type="text/javascript" src="jsfile/register.js"></script>
-	
+	<script type="text/javascript">
+	$(document).ready(function(){
+	if (!$('#home').hasClass('active')) {
+		$('#home').addClass('active');
+	}
+	});
+	</script>
 	<%if(session.getAttribute("user")!=null){
-	
 		response.sendRedirect("/login.htm");
 	}%>
 
@@ -36,6 +41,10 @@
 	    			<div class="panel-body">
 	    			<div class="page-header">
 	    			<h1>Welcome to my Spring By Hrishabh</h1>
+	    			
+	    			<%if(session.getAttribute("error")!=null) {%>
+	    				<h3 style="color: red"><%out.println(session.getAttribute("error")); %></h3>
+	    			<%} %>
 	    			</div>
 	    			
 	    			</div>
@@ -52,14 +61,16 @@
     			</div>
     			<div class="modal-body">
     				If you are already registered please enter:
-	    			<form action="login.htm" method="POST"  class="form" role=form>
+	    			<form action="login.htm" method="POST"  class="form" role=form id=loginForm>
 	    			 	<div class="form-group">
 	    			 		<label for="username">User Name:</label>
 		    				<input type="text" placeholder="Email" class="form-control" name="username" id="username">
+		    				<span id="userNameSpan" class="help-block"></span>
 		    			</div> 
 		    			<label for="password">Password:</label>
 		    			<div class="form-group">
 					        <input type="password" placeholder="Password" class="form-control" name="password" id="password">
+					        <span id="logInPassSpan" class="help-block"></span>
 						</div>
 					    <div class="form-group">
 					        <button type="submit" class="btn btn-success">Sign in</button>

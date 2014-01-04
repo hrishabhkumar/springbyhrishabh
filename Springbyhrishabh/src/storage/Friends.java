@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -28,25 +29,29 @@ public class Friends {
 			}
 			
 			else{
+				System.out.println();
 				JSONObject friendJson;
 				JSONParser parser=new JSONParser();
 				friendJson=(JSONObject) parser.parse(json);
 				String name=friendJson.get("name").toString();
 				Query query = pm.newQuery(UserDetail.class);
 				query.setOrdering("name asc");
-				String str = null;
+				
 				try{
 					List<UserDetail> results = (List<UserDetail>) query.execute();
 			
 				  if (!results.isEmpty()) {
-					  StringBuilder sb=new StringBuilder();
+					  JSONArray responseArray=new JSONArray();
 				    for (UserDetail userDetail : results) {
 				      if(userDetail.getName().toLowerCase().contains(name.toLowerCase())){
-				    	 str="{\"name\":\""+userDetail.getName()+"\""+ ",\n\"city\":\""+userDetail.getCity()+"\"},\n"; 
-				    	 sb=sb.append(str+",");
+				    	  friendJson=new JSONObject();
+				    	  friendJson.put("name", userDetail.getName());
+				    	  friendJson.put("city", userDetail.getCity());
+				    	  responseArray.add(friendJson);
 				      }
 				    }
-				    str="{\"result\": ["+sb.toString()+"]}";
+				    friendJson=new JSONObject();
+				    friendJson.put("result", responseArray.toJSONString());
 				    
 				  } else {
 				    // Handle "no results" case
@@ -54,10 +59,8 @@ public class Friends {
 			}finally {
 				  query.closeAll();
 				}
-				friendJson=(JSONObject) parser.parse(str);
-				str=friendJson.toJSONString();
-				System.out.println(str);
-				return str;
+				System.out.println(friendJson);
+				return friendJson.toJSONString();
 		}
 		}catch(Exception e){
 			return "error";

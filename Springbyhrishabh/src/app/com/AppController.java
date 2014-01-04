@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-
 import outh.fb.OuthFB;
 import outh.google.OuthGoogle;
 import storage.DataStorage;
@@ -41,12 +40,19 @@ public class AppController  {
             throws ServletException, IOException {
          return "index";
     }
+    
     @RequestMapping("/login")
     public String login(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException{
-    	
     	return login.doGet(req, resp);
 	}
-    
+    @RequestMapping("/image")
+    public String imageURL(HttpServletRequest req, HttpServletResponse resp) {
+         return "image";
+    }
+    @RequestMapping("/video")
+    public String videoURL(HttpServletRequest req, HttpServletResponse resp) {
+         return "video";
+    }
     @RequestMapping("/logout")
     public String logout(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException{
     	
@@ -128,6 +134,10 @@ public class AppController  {
 	    	return  str;
 	    	
 	    }
+	 @RequestMapping (value="/getbloburl")
+	 public @ResponseBody String blobURL(){
+		 return blobstoreService.createUploadUrl("/image");
+	 }
 	 @RequestMapping(value="/image", method=RequestMethod.POST)
 	 public void images(HttpServletRequest req, HttpServletResponse resp) throws IOException{
 		 Map<String, List<BlobKey>> blobs = blobstoreService.getUploads(req);

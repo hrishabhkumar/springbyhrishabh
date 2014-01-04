@@ -1,5 +1,4 @@
-$(document).ready(function(){
-	
+$(document).ready(function(){	
 	//Date Picker
 	$(document).ready(function(){
 		$("#dob").keydown(false);
@@ -30,7 +29,7 @@ $(document).ready(function(){
 				$('#submit').attr("disabled", false);
 			}
 			else{
-				$('#contactspan').text("Please Enter valid contact no.");
+				$('#contactspan').html("Please Enter valid contact no.").css("color", "red");
 				$('#submit').attr("disabled", true);
 			}
 			
@@ -53,18 +52,18 @@ $(document).ready(function(){
 		  data: dataString,
 		  success : function(data){
 			  if(data=="found"){
-				  $("#emailspan").text("opssss!!!! Email is already Registered ");
+				  $("#emailspan").html("opssss!!!! Email is already Registered ").css("color", "red");;
 		    	$('#submit').attr("disabled", true);
 		      }
 				else{
-					$("#emailspan").text("Congrats!! this is not yet registered");
+					$("#emailspan").text("Congrats!! this is not yet registered").css("color", "green");;
 					$('#submit').attr("disabled", false);
 				}
 			   }
 		});
 		}
 		else{
-			$("#emailspan").text("Please enter correct email adress");
+			$("#emailspan").text("Please enter correct email adress").css("color", "red");;
 			$('#submit').attr("disabled", true);
 		}
 	
@@ -113,6 +112,7 @@ $(document).ready(function(){
 				if(data=="success"){
 					window.location="/";
 				}
+				
 				else{
 					alert("Sorry!!! There is Some Problem.");
 		    	  }

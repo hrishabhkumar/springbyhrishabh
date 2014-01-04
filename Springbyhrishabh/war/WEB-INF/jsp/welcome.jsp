@@ -14,9 +14,15 @@
 	
 	<link href="css/bootstrap.min.css" rel="stylesheet">
      <script src="js/bootstrap.min.js"></script>
+     <script>
+     $(document).ready(function(){
+     if (!$('#home').hasClass('active')) {
+ 		$('#home').addClass('active');
+ 	}
+     });
+     </script>
 </head>
 <body>
-	
 	<jsp:include page="header.jsp"></jsp:include>
 	<div class="row">
 	<div class=".col-lg-4">

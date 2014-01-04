@@ -10,7 +10,7 @@
 <html>
 <head>
 <%if(session.getAttribute("user")==null){
-		response.sendRedirect("/login.htm");
+	response.sendRedirect("/login.htm");
 	}%>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -30,17 +30,22 @@
 	<jsp:include page="header.jsp"></jsp:include>
 	<div class="container" >
 	<div class="center-block"><h1>User Details</h1></div>
-	<form action="<%= blobstoreService.createUploadUrl("/image") %>" method="post" id="imgeupload" class="form-horizontal" role="form">
-     	<div class="form-group">
+	<form name="register" id="reg" action="" method="POST" class="form" role="form">
+		<div class=row>
+			<div class="form-group">
      		<div class="col-xs-4">
 				<label for="image">Upload Image :</label>			
 				<input type="file" name="image" id="image">
-				<button type="submit" id="upload" class="btn btn-default">Upload</button>
+				<button type="button" id="upload" class="btn btn-default">Upload</button>
+				<br>
+				<div class="progress progress-striped active" id=progress-div>
+			  		<div id="progress" class="progress-bar"  role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" >
+			    		<span class="sr-only" id=progress-span></span>
+			  		</div>
+				</div>
 			</div>
 		</div>
-	</form>
-	
-	<form name="register" id="reg" action="" method="POST" class="form" role="form">
+		</div>
 		<div class=row>
 		<div class="form-group">
 			<div class="col-sm-4">
